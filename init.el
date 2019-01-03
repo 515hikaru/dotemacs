@@ -1,8 +1,20 @@
-;;; package el
+;;; package --- @515hikaru emacs initialization
+
+;; Copyright (C) 2019 by Takahiro KOJIMA
+;; Author: Takahiro KOJIMA <12kojima.takahiro@gmail.com>
+;; URL: https://github.com/515hikaru/dotemacs
+;; Version: 0.0.1
+;; LICENSE: MIT
+
+;;; Commentary:
+;; This package provides Emacs environment for @515hikaru
+
+;;; Code:
+;; package el
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 ;;; use use-package
@@ -20,7 +32,7 @@
   (set-fontset-font nil 'japanese-jisx0213.2004-1 jp-fontspec)
   (set-fontset-font nil 'japanese-jisx0213-2 jp-fontspec)
   (set-fontset-font nil 'katakana-jisx0201 jp-fontspec)
-  (set-fontset-font nil '(#x0080 . #x024F) fontspec) 
+  (set-fontset-font nil '(#x0080 . #x024F) fontspec)
   (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
 ;;; company
 (use-package company
@@ -34,7 +46,7 @@
 (use-package open-junk-file
   :bind ("C-c j" . open-junk-file)
   )
-;;; elm mode
+;;; elm environment
 (use-package elm-mode
   :config
   (setq elm-format-on-save t)
@@ -53,10 +65,12 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
+    (magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(provide 'init)
+;;; init.el ends here
