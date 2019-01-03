@@ -1,0 +1,3 @@
+#+TITLE: dotemacs
+
+@515hikaru configuration for Emacs.
