@@ -34,6 +34,10 @@
   (set-fontset-font nil 'katakana-jisx0201 jp-fontspec)
   (set-fontset-font nil '(#x0080 . #x024F) fontspec)
   (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
+;;; exec-path-from-shell
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 ;;; company
 (use-package company
   :config
@@ -56,7 +60,25 @@
   :init
   (eval-after-load 'flycheck
      '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
-)
+  )
+;; rust environment
+(use-package rust-mode
+  :config
+  (setq rust-format-on-save t))
+(use-package company-racer
+  :defer t
+  :init
+  (add-hook 'racer-mode-hook #'company-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode)
+  (add-hook 'rust-mode-hook #'racer-mode)
+  :config
+  (setq company-tooltip-align-annotations t)
+  :bind (:map rust-mode-map
+            ("TAB" . #'company-indent-or-complete-common)))
+(use-package flycheck-rust
+  :init
+  (with-eval-after-load 'rust-mode
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -65,7 +87,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
+    (racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
