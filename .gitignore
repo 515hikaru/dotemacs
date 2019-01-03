@@ -1,4 +1,6 @@
 elpa
 eshell
 auto-save-list
+url
 *~
+*.bak
