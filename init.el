@@ -46,6 +46,10 @@
 (use-package flycheck
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode))
+;;; magit
+(use-package magit
+  :bind ("C-x m" . magit-status)
+  )
 ;;; junk file
 (use-package open-junk-file
   :config (setq open-junk-file-format "~/memo/%Y-%m-%d-%H%M%S.")
