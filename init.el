@@ -48,6 +48,7 @@
   (add-hook 'after-init-hook #'global-flycheck-mode))
 ;;; junk file
 (use-package open-junk-file
+  :config (setq open-junk-file-format "~/memo/%Y-%m-%d-%H%M%S.")
   :bind ("C-c j" . open-junk-file)
   )
 ;;; elm environment
@@ -78,7 +79,12 @@
 (use-package flycheck-rust
   :init
   (with-eval-after-load 'rust-mode
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
+    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
+;;; user function
+(defun open-memo-dir()
+  "Open memo file directory with dired."
+  (interactive)
+  (dired "~/memo"))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -87,7 +93,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
+    (markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
