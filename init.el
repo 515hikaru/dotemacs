@@ -13,8 +13,6 @@
 ;; package el
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 ;;; use use-package
@@ -35,7 +33,6 @@
   (set-fontset-font nil '(#x0080 . #x024F) fontspec)
   (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
 ;;; exec-path-from-shell
-
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 ;;; company
