@@ -32,6 +32,9 @@
   (set-fontset-font nil 'katakana-jisx0201 jp-fontspec)
   (set-fontset-font nil '(#x0080 . #x024F) fontspec)
   (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
+;; no backup
+(setq make-backup-files nil)
+(setq make-backup-files nil)
 ;;; exec-path-from-shell
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
