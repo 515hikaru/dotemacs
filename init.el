@@ -38,10 +38,19 @@
 ;;; exec-path-from-shell
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+;;; lsp-mode
+(use-package lsp-mode
+  :commands lsp)
+(use-package company-lsp)
+(use-package lsp-ui
+  :config
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
 ;;; company
 (use-package company
   :config
-  (global-company-mode))
+  (global-company-mode)
+  (push 'company-lsp company-backends))
 ;;; flycheck
 (use-package flycheck
   :init
@@ -55,6 +64,15 @@
   :config (setq open-junk-file-format "~/memo/%Y-%m-%d-%H%M%S.")
   :bind ("C-c j" . open-junk-file)
   )
+;; python
+(use-package python-mode
+  :config
+  (add-hook 'python-mode-hook #'lsp))
+(use-package conda
+  :init
+  (custom-set-variables '(conda-anaconda-home "~/miniconda3"))
+  :config
+  (conda-env-autoactivate-mode t))
 ;;; elm environment
 (use-package elm-mode
   :config
@@ -95,9 +113,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(conda-anaconda-home "~/miniconda3")
  '(package-selected-packages
    (quote
-    (markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
+    (yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

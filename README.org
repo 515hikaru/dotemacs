@@ -1,3 +1,15 @@
 #+TITLE: dotemacs
 
 @515hikaru configuration for Emacs.
+
+* Python Environment
+
+- I use [[https://github.com/emacs-lsp/lsp-mode/][lsp-mode]] with [[https://github.com/ambv/black][black]] formatter.
+- I manage virtual environments with [[https://github.com/necaris/conda.el][conda.el]].
+
+#+BEGIN_SRC
+pip install 'python-language-server[all]'
+pip install pyls-black
+#+END_SRC
+
+Before starting development, I have to create virtual environment by =conda= and activate on Emacs(=M-x conda-env-activate=)
