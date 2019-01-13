@@ -36,9 +36,8 @@
 (setq make-backup-files nil)
 (setq make-backup-files nil)
 ;;; exec-path-from-shell
-(exec-path-from-shell-copy-envs '("PATH" "GOPATH"))
 (when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
+	    (exec-path-from-shell-copy-envs '("PATH" "GOPATH")))
 ;;; lsp-mode
 (use-package lsp-mode
   :commands lsp)
