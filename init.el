@@ -36,6 +36,7 @@
 (setq make-backup-files nil)
 (setq make-backup-files nil)
 ;;; exec-path-from-shell
+(exec-path-from-shell-copy-envs '("PATH" "GOPATH"))
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 ;;; lsp-mode
@@ -45,7 +46,6 @@
 (use-package lsp-ui
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-
 ;;; company
 (use-package company
   :config
@@ -66,6 +66,8 @@
   )
 ;; python
 (use-package python-mode
+  :defer t
+  :commands python-mode
   :config
   (add-hook 'python-mode-hook #'lsp))
 (use-package conda
@@ -77,13 +79,25 @@
 (use-package elm-mode
   :config
   (setq elm-format-on-save t)
-  ;;(setq elm-format-elm-version 0.19)
+  (setq elm-format-elm-version 0.19)
   )
 (use-package flycheck-elm
   :init
-  (eval-after-load 'flycheck
+  (eval-after-load 'flycHeck
      '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
   )
+;; golang environment
+(use-package go-mode
+  :commands go-mode
+  :mode (("\\.go?\\'" . go-mode))
+  :defer t
+  :init
+  (add-hook 'go-mode-hook #'lsp)
+  :config
+  (setq indent-tabs-mode nil)
+  (setq c-basic-offset 4)
+  (setq tab-width 4)
+  (add-hook 'before-save-hook 'lsp-format-buffer))
 ;; rust environment
 (use-package rust-mode
   :config
@@ -116,7 +130,7 @@
  '(conda-anaconda-home "~/miniconda3")
  '(package-selected-packages
    (quote
-    (yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
+    (ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
