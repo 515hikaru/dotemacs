@@ -2,7 +2,8 @@
 
 @515hikaru configuration for Emacs.
 
-* Python Environment
+* Development Environments
+** Python Environment
 
 - I use [[https://github.com/emacs-lsp/lsp-mode/][lsp-mode]] with [[https://github.com/ambv/black][black]] formatter.
 - I manage virtual environments with [[https://github.com/necaris/conda.el][conda.el]].
@@ -13,3 +14,13 @@ pip install pyls-black
 #+END_SRC
 
 Before starting development, I have to create virtual environment by =conda= and activate on Emacs(=M-x conda-env-activate=)
+
+** Golang Environment
+
+- I use lsp-mode with [[https://github.com/saibing/bingo][bingo]].
+- I should see [[https://github.com/saibing/bingo/wiki/Install][how to install bingo]].
+
+* Notebook Environment
+
+- I use [[https://github.com/millejoh/emacs-ipython-notebook][emacs-ipython-notebook]].
+- Execute =M-x ein:jupyter-server-start= and select notebook. See [[https://github.com/millejoh/emacs-ipython-notebook#keybindings---notebook][keybindings]].
