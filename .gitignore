@@ -6,3 +6,4 @@ url
 *.bak
 .lsp*
 request/*
+*.dat
