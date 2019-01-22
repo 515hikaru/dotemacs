@@ -60,7 +60,7 @@
   )
 ;;; junk file
 (use-package open-junk-file
-  :config (setq open-junk-file-format "~/memo/%Y-%m-%d-%H%M%S.")
+  :config (setq open-junk-file-format (concat (getenv "HOME") "/memo/%Y-%m-%d-%H%M%S."))
   :bind ("C-c j" . open-junk-file)
   )
 ;; python
@@ -115,6 +115,8 @@
   :init
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
+(use-package julia-repl
+  :config (add-hook 'julia-mode-hook 'julia-repl-mode))
 ;;; user function
 (defun open-memo-dir()
   "Open memo file directory with dired."
@@ -129,7 +131,7 @@
  '(conda-anaconda-home "~/miniconda3")
  '(package-selected-packages
    (quote
-    (ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
+    (julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
