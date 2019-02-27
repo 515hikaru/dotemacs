@@ -16,9 +16,11 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 ;;; use use-package
+(package-install 'use-package)
 (require 'use-package)
 ;;; theme
-(use-package atom-one-dark-theme)
+(use-package atom-one-dark-theme
+  :ensure t)
 ;;; font
 (let* ((size 15)
        (asciifont "Ricty Diminished Discord")
@@ -36,57 +38,69 @@
 (setq make-backup-files nil)
 (setq make-backup-files nil)
 ;;; exec-path-from-shell
+(use-package exec-path-from-shell
+  :ensure t)
 (when (memq window-system '(mac ns x))
 	    (exec-path-from-shell-copy-envs '("PATH" "GOPATH")))
 ;;; lsp-mode
 (use-package lsp-mode
+  :ensure t
   :commands lsp)
-(use-package company-lsp)
+(use-package company-lsp
+  :ensure t)
 (use-package lsp-ui
+  :ensure t
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 ;;; company
 (use-package company
+  :ensure t
   :config
   (global-company-mode)
   (push 'company-lsp company-backends))
 ;;; flycheck
 (use-package flycheck
+  :ensure t
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode))
 ;;; magit
 (use-package magit
+  :ensure t
   :bind ("C-x m" . magit-status)
   )
 ;;; junk file
 (use-package open-junk-file
+  :ensure t
   :config (setq open-junk-file-format (concat (getenv "HOME") "/memo/%Y-%m-%d-%H%M%S."))
   :bind ("C-c j" . open-junk-file)
   )
 ;; python
 (use-package python-mode
+  :ensure t
   :defer t
   :commands python-mode
   :config
   (add-hook 'python-mode-hook #'lsp))
 (use-package conda
+  :ensure t
   :init
   (custom-set-variables '(conda-anaconda-home "~/miniconda3"))
   :config
   (conda-env-autoactivate-mode t))
 ;;; elm environment
 (use-package elm-mode
+  :ensure t
   :config
   (setq elm-format-on-save t)
-  (setq elm-format-elm-version 0.19)
-  )
+  (setq elm-format-elm-version 0.19))
 (use-package flycheck-elm
+  :ensure t
   :init
   (eval-after-load 'flycHeck
-     '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
-  )
+     '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup)))
 ;; golang environment
 (use-package go-mode
+  :ensure t
   :commands go-mode
   :mode (("\\.go?\\'" . go-mode))
   :defer t
@@ -99,9 +113,11 @@
   (add-hook 'before-save-hook 'lsp-format-buffer))
 ;; rust environment
 (use-package rust-mode
+  :ensure t
   :config
   (setq rust-format-on-save t))
 (use-package company-racer
+  :ensure t
   :defer t
   :init
   (add-hook 'racer-mode-hook #'company-mode)
@@ -112,10 +128,12 @@
   :bind (:map rust-mode-map
             ("TAB" . #'company-indent-or-complete-common)))
 (use-package flycheck-rust
+  :ensure t
   :init
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 (use-package julia-repl
+  :ensure t
   :config (add-hook 'julia-mode-hook 'julia-repl-mode))
 ;;; user function
 (defun open-memo-dir()
