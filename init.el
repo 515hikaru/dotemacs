@@ -23,8 +23,8 @@
   :ensure t)
 ;;; font
 (let* ((size 15)
-       (asciifont "Ricty Diminished Discord")
-       (jpfont "Ricty Diminished Discord")
+       (asciifont "Ricty Diminished")
+       (jpfont "Ricty Diminished")
        (h (* size 10))
        (fontspec (font-spec :family asciifont))
        (jp-fontspec (font-spec :family jpfont)))
