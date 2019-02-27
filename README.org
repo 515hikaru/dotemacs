@@ -2,6 +2,16 @@
 
 @515hikaru configuration for Emacs.
 
+* To Start Using
+
+You have to install manualy [[https://github.com/jwiegley/use-package][use-package]].
+
+#+BEGIN_SRC
+M-x package-install [RET] use-package
+#+END_SRC
+
+Then, you need only to restart Emacs.
+
 * Development Environments
 ** Python Environment
 
