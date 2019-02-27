@@ -23,8 +23,8 @@
   :ensure t)
 ;;; font
 (let* ((size 15)
-       (asciifont "Ricty Diminished Discord")
-       (jpfont "Ricty Diminished Discord")
+       (asciifont "Ricty Diminished")
+       (jpfont "Ricty Diminished")
        (h (* size 10))
        (fontspec (font-spec :family asciifont))
        (jp-fontspec (font-spec :family jpfont)))
@@ -141,7 +141,11 @@
   (interactive)
   (dired "~/memo"))
 (use-package neotree
-  :ensure t)
+  :ensure t
+  :bind ([f8] . 'neotree-toggle)
+  :config
+  (setq neo-show-hidden-files t)
+  (setq neo-smart-open t))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
