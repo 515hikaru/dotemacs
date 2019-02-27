@@ -141,7 +141,11 @@
   (interactive)
   (dired "~/memo"))
 (use-package neotree
-  :ensure t)
+  :ensure t
+  :bind ([f8] . 'neotree-toggle)
+  :config
+  (setq neo-show-hidden-files t)
+  (setq neo-smart-open t))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
