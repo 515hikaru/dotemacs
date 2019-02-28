@@ -18,6 +18,8 @@
 ;;; use use-package
 (package-install 'use-package)
 (require 'use-package)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 ;;; theme
 (use-package atom-one-dark-theme
   :ensure t)
