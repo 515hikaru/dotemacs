@@ -66,14 +66,12 @@
 ;;; magit
 (use-package magit
   :ensure t
-  :bind ("C-x m" . magit-status)
-  )
+  :bind ("C-x m" . magit-status))
 ;;; junk file
 (use-package open-junk-file
   :ensure t
   :config (setq open-junk-file-format (concat (getenv "HOME") "/memo/%Y-%m-%d-%H%M%S."))
-  :bind ("C-c j" . open-junk-file)
-  )
+  :bind ("C-c j" . open-junk-file))
 ;; python
 (use-package python-mode
   :ensure t
