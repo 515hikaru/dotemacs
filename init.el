@@ -157,6 +157,10 @@
     (interactive)
     (dired (get--ghq-directory-path)))
 (setq default-directory (get--ghq-directory-path))
+(defun edit-init-file()
+  "open $HOME/.emacs.d/init.el"
+  (interactive)
+  (find-file (concat (getenv "HOME") "/.emacs.d/init.el")))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
