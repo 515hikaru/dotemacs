@@ -18,8 +18,12 @@
 ;;; use use-package
 (package-install 'use-package)
 (require 'use-package)
+;;; start up
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
+;;; indentation
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 ;;; theme
 (use-package atom-one-dark-theme
   :ensure t)
