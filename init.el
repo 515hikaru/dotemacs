@@ -161,6 +161,7 @@
   "open $HOME/.emacs.d/init.el"
   (interactive)
   (find-file (concat (getenv "HOME") "/.emacs.d/init.el")))
+(global-set-key "\C-c\C-e" 'edit-init-file)
 (use-package hcl-mode
   :ensure t)
 ;;; auto config
