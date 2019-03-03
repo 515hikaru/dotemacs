@@ -151,11 +151,16 @@
   (setq neo-show-hidden-files t)
   (setq neo-smart-open t))
 (use-package subr-x)
+(defun add--last-slash (str)
+  "Add slach end of string"
+  (if (string-equal (substring str -1) "/")  ;; get last char
+      str
+      (concat str "/")))
 (defun get--ghq-directory-path()
   "Get ghq root path. if there is not ghq, return HOME directory"
   (if (executable-find "ghq")
-    (string-trim (shell-command-to-string "ghq root | tail -n 1"))
-    (concat (getenv "HOME") "/")))
+      (add--last-slash (string-trim (shell-command-to-string "ghq root | tail -n 1")))
+    (add--last-slash (getenv "HOME"))))
 (defun open-ghq-root()
     "Open ghq root directory with dired."
     (interactive)
