@@ -29,8 +29,8 @@
   :ensure t)
 ;;; font
 (let* ((size 15)
-       (asciifont "Ricty Diminished")
-       (jpfont "Ricty Diminished")
+       (asciifont "Ricty")
+       (jpfont "Ricty")
        (h (* size 10))
        (fontspec (font-spec :family asciifont))
        (jp-fontspec (font-spec :family jpfont)))
