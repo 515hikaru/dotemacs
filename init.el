@@ -24,6 +24,8 @@
 ;;; indentation
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
 ;;; theme
 (use-package atom-one-dark-theme
   :ensure t)
