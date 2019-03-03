@@ -155,7 +155,7 @@
   "Get ghq root path. if there is not ghq, return HOME directory"
   (if (executable-find "ghq")
     (string-trim (shell-command-to-string "ghq root | tail -n 1"))
-    (getenv "HOME")))
+    (concat (getenv "HOME") "/")))
 (defun open-ghq-root()
     "Open ghq root directory with dired."
     (interactive)
