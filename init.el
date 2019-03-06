@@ -178,6 +178,10 @@
 (use-package writeroom-mode
   :ensure t
   :bind ("C-x C-w" . writeroom-mode))
+(use-package counsel
+  :ensure t
+  :init (ivy-mode 1) ;; デフォルトの入力補完がivyになる
+  (counsel-mode 1))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -187,7 +191,7 @@
  '(conda-anaconda-home "~/miniconda3")
  '(package-selected-packages
    (quote
-    (writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
+    (counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm flycheck company use-package atom-one-dark-theme org-plus-contrib elm-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
