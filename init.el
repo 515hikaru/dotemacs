@@ -161,7 +161,7 @@
 (defun get--ghq-directory-path()
   "Get ghq root path. if there is not ghq, return HOME directory"
   (if (executable-find "ghq")
-      (add--last-slash (string-trim (shell-command-to-string "ghq root | tail -n 1")))
+      (add--last-slash (string-trim (shell-command-to-string "ghq root")))
     (add--last-slash (getenv "HOME"))))
 (defun open-ghq-root()
     "Open ghq root directory with dired."
