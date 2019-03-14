@@ -97,8 +97,7 @@
 (use-package elm-mode
   :ensure t
   :config
-  (setq elm-format-on-save t)
-  (setq elm-format-elm-version 0.19))
+  (setq elm-format-on-save t))
 (use-package flycheck-elm
   :ensure t
   :init
