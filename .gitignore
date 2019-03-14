@@ -8,3 +8,5 @@ url
 request/*
 *.dat
 transient
+recentf
+.recentf
