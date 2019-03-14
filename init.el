@@ -18,6 +18,7 @@
 ;;; use use-package
 (package-install 'use-package)
 (require 'use-package)
+(add-to-list 'load-path "~/.emacs.d/my-elisp/")
 ;;; start up
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
@@ -192,7 +193,7 @@
   :ensure t
   :init (ivy-mode 1) ;; デフォルトの入力補完がivyになる
   (counsel-mode 1))
-
+(use-package counsel-ghq)
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
