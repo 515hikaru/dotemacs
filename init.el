@@ -112,9 +112,9 @@
   :init
   (add-hook 'go-mode-hook #'lsp)
   :config
-  (setq indent-tabs-mode nil)
-  (setq c-basic-offset 4)
-  (setq tab-width 4)
+  (setq indent-tabs-mode t)
+  (setq c-basic-offset 8)
+  (setq tab-width 8)
   (add-hook 'before-save-hook 'lsp-format-buffer))
 ;; rust environment
 (use-package rust-mode
