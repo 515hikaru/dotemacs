@@ -167,7 +167,6 @@
     "Open ghq root directory with dired."
     (interactive)
     (dired (get--ghq-directory-path)))
-(setq default-directory (get--ghq-directory-path))
 (defun edit-init-file()
   "open $HOME/.emacs.d/init.el"
   (interactive)
