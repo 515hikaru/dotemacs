@@ -193,7 +193,8 @@
   :ensure t
   :init (ivy-mode 1) ;; デフォルトの入力補完がivyになる
   (counsel-mode 1))
-(use-package counsel-ghq)
+(use-package counsel-ghq
+  :bind ("C-x C-q" . 'counsel-ghq))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
