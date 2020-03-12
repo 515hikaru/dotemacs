@@ -194,6 +194,21 @@
   (counsel-mode 1))
 (use-package counsel-ghq
   :bind ("C-x C-q" . 'counsel-ghq))
+;;; projectile
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(with-eval-after-load 'magit
+  (setq magit-repository-directories
+        '(;; Directory containing project root directories
+          ("~/dev/"      . 3)
+          ;; Specific project root directory
+          ("~/dotfiles/" . 1))))
+(with-eval-after-load 'projectile
+  (when (require 'magit nil t)
+    (mapc #'projectile-add-known-project
+          (mapcar #'file-name-as-directory (magit-list-repos)))
+    ;; Optionally write to persistent `projectile-known-projects-file'
+    (projectile-save-known-projects)))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -205,7 +220,7 @@
  '(lsp-clients-go-func-snippet-enabled nil)
  '(package-selected-packages
    (quote
-    (yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
+    (projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
