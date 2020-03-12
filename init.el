@@ -28,8 +28,31 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 ;;; theme
-(use-package atom-one-dark-theme
-  :ensure t)
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-one t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+(use-package rainbow-delimiters
+  :ensure t
+  :init (rainbow-delimiters-mode 1)
+  (setq rainbow-delimiters-outermost-only-face-count 1))
 ;;; font
 (let* ((size 15)
        (asciifont "Ricty")
@@ -50,7 +73,7 @@
 (use-package exec-path-from-shell
   :ensure t)
 (when (memq window-system '(mac ns x))
-	    (exec-path-from-shell-copy-envs '("PATH" "GOPATH")))
+        (exec-path-from-shell-copy-envs '("PATH" "GOPATH")))
 ;;; lsp-mode
 (use-package lsp-mode
   :ensure t
@@ -88,12 +111,8 @@
   :commands python-mode
   :config
   (add-hook 'python-mode-hook #'lsp))
-(use-package conda
-  :ensure t
-  :init
-  (custom-set-variables '(conda-anaconda-home "~/miniconda3"))
-  :config
-  (conda-env-autoactivate-mode t))
+(use-package poetry
+  :ensure t)
 ;;; elm environment
 (use-package elm-mode
   :ensure t
@@ -200,15 +219,24 @@
 (with-eval-after-load 'magit
   (setq magit-repository-directories
         '(;; Directory containing project root directories
-          ("~/dev/"      . 3)
-          ;; Specific project root directory
-          ("~/dotfiles/" . 1))))
-(with-eval-after-load 'projectile
-  (when (require 'magit nil t)
+          ("~/dev/"      . 3))))
+  (with-eval-after-load 'projectile
+    (when (require 'magit nil t)
     (mapc #'projectile-add-known-project
           (mapcar #'file-name-as-directory (magit-list-repos)))
     ;; Optionally write to persistent `projectile-known-projects-file'
     (projectile-save-known-projects)))
+;;; easy-hugo
+(use-package easy-hugo
+  :init (setq easy-hugo-basedir "~/dev/github.com/515hikaru/tech-memo/")
+        (setq easy-hugo-url "https://tech.515hikaru.net")
+        (define-key global-map (kbd "C-c C-h") 'easy-hugo)
+        (setq easy-hugo-bloglist
+        '(((easy-hugo-basedir . "~/src/github.com/masasam/hugo2/")
+           (easy-hugo-url . "http://example2.com")
+           (easy-hugo-sshdomain . "myblogdomain")
+           (easy-hugo-root . "/home/hugo/"))))
+  :bind ("C-c C-h" . easy-hugo))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -220,7 +248,7 @@
  '(lsp-clients-go-func-snippet-enabled nil)
  '(package-selected-packages
    (quote
-    (projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
+    (poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
