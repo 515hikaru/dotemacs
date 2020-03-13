@@ -25,7 +25,6 @@
 ;;; indentation
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(infer-indentation-style)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 ;;; theme
