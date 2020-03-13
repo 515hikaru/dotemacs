@@ -239,7 +239,27 @@
            (easy-hugo-url . "http://example2.com")
            (easy-hugo-sshdomain . "myblogdomain")
            (easy-hugo-root . "/home/hugo/"))))
-  :bind ("C-c C-h" . easy-hugo))
+        :bind ("C-c C-h" . easy-hugo))
+;;; org-mode
+;;; org-agenda
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cc" 'org-capture)
+(setq org-agenda-files
+      '("~/dev/github.com/515hikaru/org-memo/top.org"
+        "~/dev/github.com/515hikaru/org-memo/knowledge.org"
+        "~/dev/github.com/515hikaru/org-memo/remind.org"))
+;;; org-capture
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/dev/github.com/515hikaru/org-memo/remind.org" "■Capture") "* REMIND %? (wrote on %U)")
+        ("k" "Knowledge" entry (file+headline "~/dev/github.com/515hikaru/org-memo/knowledge.org" "TOP") "* %?\n  # Wrote on %U")
+        ("n" "News" entry (file+headline "~/dev/github.com/515hikaru/org-memo/news.org" "NEWS") "* %?\n  # Wrote on %U")
+        ("p" "Technology" entry (file+headline "~/dev/github.com/515hikaru/org-memo/techs.org" "Techs") "* %?\n  # Wrote on %U")
+        ("w" "Work" entry (file+headline "~/dev/github.com/515hikaru/org-memo/work.org" "Work") "* %?\n  # Wrote on %U")))
+;;; TODO
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "WAIT(w)" "REMIND(r)" "|" "DONE(d)" "SOMEDAY(s)" "CANCELED(c)")))
+;;; truncate
+(global-set-key "\C-c$" 'toggle-truncate-lines)
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
