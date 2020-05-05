@@ -65,7 +65,7 @@
 (let* ((size 15)
        (asciifont "Ricty")
        (jpfont "Ricty")
-       (h (* size 10))
+       (h (* size 18))
        (fontspec (font-spec :family asciifont))
        (jp-fontspec (font-spec :family jpfont)))
   (set-face-attribute 'default nil :family asciifont :height h)
