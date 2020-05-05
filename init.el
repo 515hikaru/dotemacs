@@ -225,18 +225,20 @@
 (use-package counsel-ghq
   :bind ("C-x C-q" . 'counsel-ghq))
 ;;; projectile
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(with-eval-after-load 'magit
-  (setq magit-repository-directories
+(use-package projectile
+  :ensure t
+  :config (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (with-eval-after-load 'magit
+    (setq magit-repository-directories
         '(;; Directory containing project root directories
-          ("~/dev/"      . 3))))
-  (with-eval-after-load 'projectile
-    (when (require 'magit nil t)
-    (mapc #'projectile-add-known-project
-          (mapcar #'file-name-as-directory (magit-list-repos)))
-    ;; Optionally write to persistent `projectile-known-projects-file'
-    (projectile-save-known-projects)))
+          ("~/ghq/src"      . 3))))
+    (with-eval-after-load 'projectile
+      (when (require 'magit nil t)
+      (mapc #'projectile-add-known-project
+            (mapcar #'file-name-as-directory (magit-list-repos)))
+      ;; Optionally write to persistent `projectile-known-projects-file'
+      (projectile-save-known-projects))))
 ;;; easy-hugo
 (use-package easy-hugo
   :init (setq easy-hugo-basedir "~/dev/github.com/515hikaru/tech-memo/")
