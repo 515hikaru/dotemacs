@@ -10,7 +10,7 @@ At first, install manualy [[https://github.com/jwiegley/use-package][use-package
 M-x package-install [RET] use-package
 #+END_SRC
 
-Then, all you need only to restart Emacs.
+Then, all you need is to restart Emacs.
 
 * LICENSE
 
