@@ -1,6 +1,6 @@
 #+TITLE: dotemacs
 
-@515hikaru configuration for Emacs.
+[[https://github.com/515hikaru][@515hikaru]] configuration for Emacs.
 
 * To Start Using
 
