@@ -274,6 +274,16 @@
 (use-package prettier-js
   :ensure t
   :init (add-hook 'markdown-mode-hook 'prettier-js-mode))
+;; pnovel mode
+(define-generic-mode pnovel-mode
+  ;; コメントになる文字列の指定
+  '()
+  ;; キーワードの指定
+  '("newline" "newpage")
+  ;; もうちょっと難しいキーワードの指定
+  '()
+  nil nil
+  "Major mode for pnovel")
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
