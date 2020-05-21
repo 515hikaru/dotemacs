@@ -281,7 +281,7 @@
   ;; キーワードの指定
   '("newline" "newpage")
   ;; もうちょっと難しいキーワードの指定
-  '()
+  '(("# .*" . font-lock-warning-face))
   nil nil
   "Major mode for pnovel")
 ;;; auto config
