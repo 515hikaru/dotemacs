@@ -284,6 +284,7 @@
   '(("# .*" . font-lock-warning-face))
   nil nil
   "Major mode for pnovel")
+(add-to-list 'auto-mode-alist '("\\.pnovel\\'" . pnovel-mode))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
