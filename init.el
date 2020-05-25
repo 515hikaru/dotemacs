@@ -241,7 +241,8 @@
       (projectile-save-known-projects))))
 ;;; easy-hugo
 (use-package easy-hugo
-  :init (setq easy-hugo-basedir "~/dev/github.com/515hikaru/tech-memo/")
+  :ensure t
+  :init (setq easy-hugo-basedir "~/ghq/github.com/515hikaru/tech-memo/")
         (setq easy-hugo-url "https://tech.515hikaru.net")
         (define-key global-map (kbd "C-c C-h") 'easy-hugo)
         (setq easy-hugo-bloglist
