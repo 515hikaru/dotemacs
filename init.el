@@ -277,8 +277,7 @@
   :init (add-hook 'markdown-mode-hook 'prettier-js-mode))
 ;; pnovel mode
 (define-generic-mode pnovel-mode
-  ;; コメントになる文字列の指定
-  '()
+  '("%")
   ;; キーワードの指定
   '("newline" "newpage")
   ;; もうちょっと難しいキーワードの指定
