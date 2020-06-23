@@ -82,27 +82,6 @@
   :ensure t)
 (when (memq window-system '(mac ns x))
         (exec-path-from-shell-copy-envs '("PATH" "GOPATH")))
-;;; lsp-mode
-(use-package lsp-mode
-  :ensure t
-  :commands lsp)
-(use-package company-lsp
-  :ensure t)
-(use-package lsp-ui
-  :ensure t
-  :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-;;; company
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode)
-  (push 'company-lsp company-backends))
-;;; flycheck
-(use-package flycheck
-  :ensure t
-  :init
-  (add-hook 'after-init-hook #'global-flycheck-mode))
 ;;; magit
 (use-package magit
   :ensure t
@@ -112,101 +91,11 @@
   :ensure t
   :config (setq open-junk-file-format (concat (getenv "HOME") "/memo/%Y-%m-%d-%H%M%S."))
   :bind ("C-c j" . open-junk-file))
-;; python
-(use-package python-mode
-  :ensure t
-  :defer t
-  :commands python-mode
-  :config
-  (add-hook 'python-mode-hook #'lsp))
-(use-package auto-virtualenvwrapper
-  :config (add-hook 'python-mode-hook #'auto-virtualenvwrapper-activate)
-  :ensure t)
-(use-package poetry
-  :ensure t)
-;;; elm environment
-(use-package elm-mode
-  :ensure t
-  :config
-  (setq elm-format-on-save t))
-(use-package flycheck-elm
-  :ensure t
-  :init
-  (eval-after-load 'flycHeck
-     '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup)))
-;; golang environment
-(use-package go-mode
-  :ensure t
-  :commands go-mode
-  :mode (("\\.go?\\'" . go-mode))
-  :defer t
-  :init
-  (add-hook 'go-mode-hook #'lsp)
-  :config
-  (setq indent-tabs-mode t)
-  (setq c-basic-offset 8)
-  (setq tab-width 8)
-  (add-hook 'before-save-hook 'lsp-format-buffer))
-;; rust environment
-(use-package rust-mode
-  :ensure t
-  :config
-  (setq rust-format-on-save t))
-(use-package company-racer
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'racer-mode-hook #'company-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode)
-  (add-hook 'rust-mode-hook #'racer-mode)
-  :config
-  (setq company-tooltip-align-annotations t)
-  :bind (:map rust-mode-map
-            ("TAB" . #'company-indent-or-complete-common)))
-(use-package flycheck-rust
-  :ensure t
-  :init
-  (with-eval-after-load 'rust-mode
-    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
-(use-package julia-repl
-  :ensure t
-  :config (add-hook 'julia-mode-hook 'julia-repl-mode))
-;;; user function
-(defun open-memo-dir()
-  "Open memo file directory with dired."
-  (interactive)
-  (dired "~/memo"))
-(use-package neotree
-  :ensure t
-  :bind ([f8] . 'neotree-toggle)
-  :config
-  (setq neo-show-hidden-files t)
-  (setq neo-smart-open t))
-(use-package subr-x)
-(defun add--last-slash (str)
-  "Add slach end of string"
-  (if (string-equal (substring str -1) "/")  ;; get last char
-      str
-      (concat str "/")))
-(defun get--ghq-directory-path()
-  "Get ghq root path. if there is not ghq, return HOME directory"
-  (if (executable-find "ghq")
-      (add--last-slash (string-trim (shell-command-to-string "ghq root")))
-    (add--last-slash (getenv "HOME"))))
-(defun open-ghq-root()
-    "Open ghq root directory with dired."
-    (interactive)
-    (dired (get--ghq-directory-path)))
 (defun edit-init-file()
   "open $HOME/.emacs.d/init.el"
   (interactive)
   (find-file (concat (getenv "HOME") "/.emacs.d/init.el")))
 (global-set-key "\C-c\C-e" 'edit-init-file)
-(use-package hcl-mode
-  :ensure t)
-(use-package writeroom-mode
-  :ensure t
-  :bind ("C-x C-w" . writeroom-mode))
 (use-package recentf
   :ensure t
   :bind ("C-x C-r" . 'counsel-recentf)
@@ -222,8 +111,6 @@
   :ensure t
   :init (ivy-mode 1) ;; デフォルトの入力補完がivyになる
   (counsel-mode 1))
-(use-package counsel-ghq
-  :bind ("C-x C-q" . 'counsel-ghq))
 ;;; projectile
 (use-package projectile
   :ensure t
@@ -242,7 +129,7 @@
 ;;; easy-hugo
 (use-package easy-hugo
   :ensure t
-  :init (setq easy-hugo-basedir "~/ghq/github.com/515hikaru/tech-memo/")
+  :init (setq easy-hugo-basedir "~/ghq/src/github.com/515hikaru/tech-memo/")
         (setq easy-hugo-url "https://tech.515hikaru.net")
         (define-key global-map (kbd "C-c C-h") 'easy-hugo)
         (setq easy-hugo-bloglist
@@ -271,10 +158,6 @@
       '((sequence "TODO(t)" "WAIT(w)" "REMIND(r)" "|" "DONE(d)" "SOMEDAY(s)" "CANCELED(c)")))
 ;;; truncate
 (global-set-key "\C-c$" 'toggle-truncate-lines)
-;;; prettier
-(use-package prettier-js
-  :ensure t
-  :init (add-hook 'markdown-mode-hook 'prettier-js-mode))
 ;; pnovel mode
 (define-generic-mode pnovel-mode
   '("%")
