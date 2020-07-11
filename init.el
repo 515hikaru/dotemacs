@@ -27,6 +27,9 @@
 (setq-default tab-width 4)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
+;;; count chars
+(add-to-list 'global-mode-string '(" %i"))
+(global-set-key (kbd "C-c t") 'toggle-truncate-lines)
 ;;; IME
 ;;; mozc
 (use-package mozc
