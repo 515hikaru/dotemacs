@@ -164,7 +164,8 @@
   ;; キーワードの指定
   '("newline" "newpage")
   ;; もうちょっと難しいキーワードの指定
-  '(("# .*" . font-lock-warning-face))
+  '(("# .*" . font-lock-warning-face)
+    ("`.*`" . font-lock-doc-face))
   nil nil
   "Major mode for pnovel")
 (add-to-list 'auto-mode-alist '("\\.pnovel\\'" . pnovel-mode))
