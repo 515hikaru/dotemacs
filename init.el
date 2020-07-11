@@ -80,6 +80,10 @@
 ;; no backup
 (setq make-backup-files nil)
 (setq make-backup-files nil)
+;;;
+(run-with-idle-timer 30 t
+                     '(lambda ()
+                        (with-suppressed-message (recentf-save-list))))
 ;;; exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure t)
