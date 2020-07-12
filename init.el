@@ -184,9 +184,7 @@
 ;; pnovel mode
 (define-generic-mode pnovel-mode
   '("%")
-  ;; キーワードの指定
   '("newline" "newpage")
-  ;; もうちょっと難しいキーワードの指定
   '(("# .*" . font-lock-warning-face)
     ("`.*`" . font-lock-doc-face))
   nil nil
