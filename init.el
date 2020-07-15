@@ -59,19 +59,8 @@
   (doom-themes-org-config))
 (use-package doom-modeline
   :ensure t
-  :init (doom-modeline-mode 1)
-  :custom (doom-modeline-buffer-file-name-style 'truncate-with-project)
-  (doom-modeline-icon t)
-  (doom-modeline-major-mode-icon nil)
-  (doom-modeline-minor-modes nil)
-  :hook
-  (after-init . doom-modeline-mode)
-  :config
-  (line-number-mode 0)
-  (column-number-mode 0)
-  (doom-modeline-def-modeline 'main
-    '(bar window-number buffer-info remote-host buffer-position parrot selection-info)
-    '(misc-info persp-name lsp github debug minor-modes input-method major-mode process vcs checker)))
+  :init (doom-modeline-mode 1))
+
 (use-package rainbow-delimiters
   :ensure t
   :init (rainbow-delimiters-mode 1)
@@ -157,6 +146,9 @@
            (easy-hugo-sshdomain . "myblogdomain")
            (easy-hugo-root . "/home/hugo/"))))
         :bind ("C-c C-h" . easy-hugo))
+;;; markdown-mode
+(use-package markdown-mode
+  :ensure t)
 ;;; org-mode
 ;;; org-agenda
 (define-key global-map "\C-ca" 'org-agenda)
@@ -198,6 +190,8 @@
  ;; If there is more than one, they won't work right.
  '(company-lsp-enable-snippet nil)
  '(conda-anaconda-home "~/miniconda3")
+ '(doom-modeline-buffer-file-name-style (quote relative-to-project))
+ '(doom-modeline-enable-word-count t)
  '(lsp-clients-go-func-snippet-enabled nil)
  '(package-selected-packages
    (quote
