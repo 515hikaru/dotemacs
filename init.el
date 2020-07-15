@@ -46,20 +46,19 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
-  (doom-modeline-def-segment buffer-size
+  (doom-modeline-def-segment count-chars
     "Display current buffer size"
     (format-mode-line " %i"))
   (defvar doom-modeline-main-p t)
   (doom-modeline-def-modeline 'sub-modeline
     '(bar workspace-name window-number modals matches buffer-info remote-host buffer-position parrot selection-info)
-    '(objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method buffer-size indent-info buffer-encoding major-mode process vcs checker))
+    '(objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method count-chars indent-info buffer-encoding major-mode process vcs checker))
   (defun switch-modeline ()
   (interactive)
   (if doom-modeline-main-p
       (doom-modeline-set-modeline 'sub-modeline)
-    (doom-modeline-set-modeline 'main-modeline))
+    (doom-modeline-set-modeline 'main))
   (force-mode-line-update)
-  (print doom-modeline-main-p)
   (setq doom-modeline-main-p (not doom-modeline-main-p)))
   :bind ("C-c C-t" . switch-modeline)
   :config (line-number-mode 0)
