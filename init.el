@@ -181,11 +181,16 @@
  '(company-lsp-enable-snippet nil)
  '(conda-anaconda-home "~/miniconda3")
  '(doom-modeline-buffer-file-name-style (quote relative-to-project))
+ '(doom-modeline-buffer-modification-icon nil)
  '(doom-modeline-enable-word-count t)
+ '(doom-modeline-major-mode-color-icon nil)
+ '(doom-modeline-major-mode-icon nil)
+ '(doom-modeline-modal-icon nil)
  '(lsp-clients-go-func-snippet-enabled nil)
+ '(nyan-bar-length 128)
  '(package-selected-packages
    (quote
-    (ox-hugo mozc prettier-js auto-virtualenvwrapper poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
+    (nyan-mode ox-hugo mozc prettier-js auto-virtualenvwrapper poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
