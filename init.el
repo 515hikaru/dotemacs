@@ -45,13 +45,32 @@
     (doom-themes-org-config))
 (use-package doom-modeline
   :ensure t
-  :init (doom-modeline-mode 1))
+  :init (doom-modeline-mode 1)
+  (doom-modeline-def-segment buffer-size
+    "Display current buffer size"
+    (format-mode-line " %i"))
+  (defvar doom-modeline-main-p t)
+  (doom-modeline-def-modeline 'sub-modeline
+    '(bar workspace-name window-number modals matches buffer-info remote-host buffer-position parrot selection-info)
+    '(objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method buffer-size indent-info buffer-encoding major-mode process vcs checker))
+  (defun switch-modeline ()
+  (interactive)
+  (if doom-modeline-main-p
+      (doom-modeline-set-modeline 'sub-modeline)
+    (doom-modeline-set-modeline 'main-modeline))
+  (force-mode-line-update)
+  (print doom-modeline-main-p)
+  (setq doom-modeline-main-p (not doom-modeline-main-p)))
+  :bind ("C-c C-t" . switch-modeline)
+  :config (line-number-mode 0)
+  (column-number-mode 0))
 (use-package nyan-mode
   :ensure t
   :config (nyan-mode 1))
 (use-package rainbow-delimiters
   :ensure t
-  :init (rainbow-delimiters-mode 1)
+  :hook (prog-mode . rainbow-delimiters-mode)
+  :config (rainbow-delimiters-mode 1)
   (setq rainbow-delimiters-outermost-only-face-count 1))
 ;;; font
 (let* ((size 15)
@@ -81,7 +100,7 @@
 ;;; magit
 (use-package magit
   :ensure t
-  :bind ("C-x m" . magit-status))
+  :bind ("C-x g" . magit-status))
 ;;; junk file
 (use-package open-junk-file
   :ensure t
