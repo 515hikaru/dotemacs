@@ -27,8 +27,6 @@
 (setq-default tab-width 4)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-;;; count chars
-(add-to-list 'global-mode-string '(" %i"))
 (global-set-key (kbd "C-c t") 'toggle-truncate-lines)
 ;;; IME
 ;;; mozc
@@ -172,6 +170,8 @@
   nil nil
   "Major mode for pnovel")
 (add-to-list 'auto-mode-alist '("\\.pnovel\\'" . pnovel-mode))
+;;; count chars
+(add-hook 'pnovel-mode-hook (add-to-list 'global-mode-string '(" %i")))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
