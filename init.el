@@ -63,9 +63,6 @@
   :bind ("C-c C-t" . switch-modeline)
   :config (line-number-mode 0)
   (column-number-mode 0))
-(use-package nyan-mode
-  :ensure t
-  :config (nyan-mode 1))
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode)
