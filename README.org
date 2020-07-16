@@ -4,7 +4,13 @@
 
 * To Start Using
 
-At first, install manualy [[https://github.com/jwiegley/use-package][use-package]].
+At first, =git clone= this repository as .emacs.d:
+
+#+BEGIN_SRC sh
+git clone git@github.com:515hikaru/dotemacs.git ~/.emacs.d
+#+END_SRC
+
+Second, launch emacs and install manualy [[https://github.com/jwiegley/use-package][use-package]].
 
 #+BEGIN_SRC
 M-x package-install [RET] use-package
