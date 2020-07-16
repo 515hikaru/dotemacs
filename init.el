@@ -122,6 +122,26 @@
   :ensure t
   :init (ivy-mode 1) ;; デフォルトの入力補完がivyになる
   (counsel-mode 1))
+;;; company-mode
+(use-package company
+  :ensure t
+  :hook ((after-init . global-company-mode))
+  :config (setq company-minimum-prefix-length 1
+                company-idle-delay 0.0))
+;;; lsp-mode
+(setq lsp-keymap-prefix "C-c l")
+(use-package lsp-mode
+  :ensure t
+  :hook ((python-mode . lsp))
+  :commands lsp)
+;; optionally
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+;; if you are ivy user
+(use-package lsp-ivy
+  :ensure t
+  :commands lsp-ivy-workspace-symbol)
 ;;; projectile
 (use-package projectile
   :ensure t
@@ -200,10 +220,12 @@
  '(doom-modeline-major-mode-icon nil)
  '(doom-modeline-modal-icon nil)
  '(lsp-clients-go-func-snippet-enabled nil)
+ '(lsp-pyls-plugins-pylint-enabled t)
+ '(lsp-pyls-server-command (quote ("~/Library/Python/3.8/bin/pyls")))
  '(nyan-bar-length 128)
  '(package-selected-packages
    (quote
-    (switch-buffer-functions nyan-mode ox-hugo mozc prettier-js auto-virtualenvwrapper poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
+    (company-mode lsp-ivy switch-buffer-functions nyan-mode ox-hugo mozc prettier-js auto-virtualenvwrapper poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
