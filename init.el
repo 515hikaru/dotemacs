@@ -83,10 +83,10 @@
       (set-fontset-font nil 'katakana-jisx0201 jp-fontspec)
       (set-fontset-font nil '(#x0080 . #x024F) fontspec)
       (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
-  (let* ((size 15)
+  (let* ((size 14)
          (asciifont "Ricty")
          (jpfont "Ricty")
-         (h (* size 18))
+         (h (* size 16))
          (fontspec (font-spec :family asciifont))
          (jp-fontspec (font-spec :family jpfont)))
       (set-face-attribute 'default nil :family asciifont :height h)
@@ -234,8 +234,8 @@
  '(doom-modeline-major-mode-icon nil)
  '(doom-modeline-modal-icon nil)
  '(lsp-clients-go-func-snippet-enabled nil)
- '(lsp-pyls-server-command (quote ("~/.local/bin/pyls")))
  '(lsp-pyls-plugins-pylint-enabled t)
+ '(lsp-pyls-server-command (quote ("~/.local/bin/pyls")))
  '(nyan-bar-length 128)
  '(package-selected-packages
    (quote
