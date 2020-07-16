@@ -220,8 +220,8 @@
  '(doom-modeline-major-mode-icon nil)
  '(doom-modeline-modal-icon nil)
  '(lsp-clients-go-func-snippet-enabled nil)
+ '(lsp-pyls-server-command (quote ("~/.local/bin/pyls")))
  '(lsp-pyls-plugins-pylint-enabled t)
- '(lsp-pyls-server-command (quote ("~/Library/Python/3.8/bin/pyls")))
  '(nyan-bar-length 128)
  '(package-selected-packages
    (quote
