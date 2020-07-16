@@ -40,7 +40,7 @@
 (use-package doom-themes
   :ensure t
   :config
-    (load-theme 'doom-dracula t)
+    (load-theme 'doom-rouge t)
     (doom-themes-neotree-config)
     (doom-themes-org-config))
 (use-package doom-modeline
