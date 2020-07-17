@@ -142,11 +142,19 @@
   :hook ((after-init . global-company-mode))
   :config (setq company-minimum-prefix-length 1
                 company-idle-delay 0.0))
+(use-package typescript-mode
+  :ensure t
+  :hook (typescript-mode . my/typescript-mode-hook)
+  :commands typescript-mode
+  :config (defun my/typescript-mode-hook ()
+  (interactive)
+  (setq-default typescript-indent-level 2)))
 ;;; lsp-mode
 (setq lsp-keymap-prefix "C-c l")
 (use-package lsp-mode
   :ensure t
-  :hook ((python-mode . lsp))
+  :hook ((python-mode . lsp)
+         (typescript-mode . lsp))
   :commands lsp)
 ;; optionally
 (use-package lsp-ui
@@ -239,7 +247,7 @@
  '(nyan-bar-length 128)
  '(package-selected-packages
    (quote
-    (company-mode lsp-ivy switch-buffer-functions nyan-mode ox-hugo mozc prettier-js auto-virtualenvwrapper poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
+    (typescript-mode company-mode lsp-ivy switch-buffer-functions nyan-mode ox-hugo mozc prettier-js auto-virtualenvwrapper poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
