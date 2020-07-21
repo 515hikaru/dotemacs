@@ -227,6 +227,10 @@
   nil nil
   "Major mode for pnovel")
 (add-to-list 'auto-mode-alist '("\\.pnovel\\'" . pnovel-mode))
+;;; writeroom-mode
+(use-package writeroom-mode
+  :ensure t
+  :config (setq write-room-major-modes '(text-mode org-mode)))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -247,7 +251,10 @@
  '(nyan-bar-length 128)
  '(package-selected-packages
    (quote
-    (typescript-mode company-mode lsp-ivy switch-buffer-functions nyan-mode ox-hugo mozc prettier-js auto-virtualenvwrapper poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib))))
+    (typescript-mode company-mode lsp-ivy switch-buffer-functions nyan-mode ox-hugo mozc prettier-js auto-virtualenvwrapper poetry easy-hugo doom-modeline all-the-icons doom-themes projectile yasnippet-snippets solidity-flycheck recentf-ext elm-mode counsel-ghq counsel ivy writeroom-mode hcl-mode subr-x neotree elixir-mode dockerfile-mode toml-mode yaml-mode julia-repl flycheck-julia julia-mode conda ein go-mode yasnippet lsp-ui python-mode company-lsp lsp-mode markdown-mode racer flycheck-rust exec-path-from-shell company-racer rust-mode magit open-junk-file flycheck-elm company use-package atom-one-dark-theme org-plus-contrib)))
+ '(projectile-project-root-files
+   (quote
+    ("pubspec.yaml" "info.rkt" "Cargo.toml" "stack.yaml" "DESCRIPTION" "Cask" "shard.yml" "Gemfile" ".bloop" "deps.edn" "build.boot" "project.clj" "build.sbt" "application.properties" "gradlew" "build.gradle" "pom.xml" "Pipfile" "tox.ini" "setup.py" "requirements.txt" "manage.py" "angular.json" "package.json" "gulpfile.js" "Gruntfile.js" "mix.exs" "rebar.config" "composer.json" "CMakeLists.txt" "Makefile" "WORKSPACE" "default.nix" "meson.build" "SConstruct" "GTAGS" "TAGS" "configure.ac" "configure.in" "cscope.out" ".dummy_project_root"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
