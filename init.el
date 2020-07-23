@@ -230,7 +230,8 @@
 ;;; writeroom-mode
 (use-package writeroom-mode
   :ensure t
-  :config (setq write-room-major-modes '(text-mode org-mode)))
+  :bind ("C-c C-w" . writeroom-mode)
+  :config (setq write-room-major-modes '(text-mode org-mode pnovel-mode)))
 ;;; auto config
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
