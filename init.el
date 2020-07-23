@@ -216,8 +216,6 @@
 (use-package ox-hugo
   :ensure t
   :after ox)
-;;; truncate
-(global-set-key "\C-c$" 'toggle-truncate-lines)
 ;; pnovel mode
 (use-package pnovel)
 ;;; writeroom-mode
