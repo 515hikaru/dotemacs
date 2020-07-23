@@ -18,7 +18,7 @@
 ;;; use use-package
 (package-install 'use-package)
 (require 'use-package)
-(add-to-list 'load-path "~/.emacs.d/my-elisp/")
+(add-to-list 'load-path "~/.emacs.d/pnovel-mode/")
 ;;; start up
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
@@ -219,14 +219,7 @@
 ;;; truncate
 (global-set-key "\C-c$" 'toggle-truncate-lines)
 ;; pnovel mode
-(define-generic-mode pnovel-mode
-  '("%")
-  '("newline" "newpage")
-  '(("# .*" . font-lock-warning-face)
-    ("`.*`" . font-lock-doc-face))
-  nil nil
-  "Major mode for pnovel")
-(add-to-list 'auto-mode-alist '("\\.pnovel\\'" . pnovel-mode))
+(use-package pnovel)
 ;;; writeroom-mode
 (use-package writeroom-mode
   :ensure t
