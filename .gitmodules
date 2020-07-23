@@ -1,0 +1,3 @@
+[submodule "pnovel-mode"]
+	path = pnovel-mode
+	url = git@github.com:515hikaru/pnovel-mode.git
