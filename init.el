@@ -98,10 +98,6 @@
 ;; no backup
 (setq make-backup-files nil)
 (setq make-backup-files nil)
-;;;
-(run-with-idle-timer 30 t
-                     '(lambda ()
-                        (with-suppressed-message (recentf-save-list))))
 ;;; exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure t)
@@ -128,8 +124,7 @@
   (setq recentf-save-file "~/.emacs.d/.recentf")
   (setq recentf-max-saved-items 200)
   (setq recentf-exclude '(".recentf"))
-  (setq recentf-auto-cleanup 'never)
-  (run-with-idle-timer 30 t '(lambda () (with-suppressed-message (recentf-save-list)))))
+  (setq recentf-auto-cleanup 'never))
 (use-package recentf-ext
   :ensure t)
 (use-package counsel
