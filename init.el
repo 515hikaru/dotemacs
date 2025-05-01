@@ -66,3 +66,34 @@
          (filepath (expand-file-name filename draft-dir)))
     (find-file filepath)
     (insert (format "#+title: %s\n\n" title))))
+
+(defun open-weekly-reviews-file ()
+  "Weekly Reviewsファイルを開く"
+  (interactive)
+  (let ((file-name "/Users/hikaru/Library/Mobile Documents/com~apple~CloudDocs/Documents/weekly_reviews/2025-weekly-reviews.org"))
+    (find-file file-name)
+    (when (= (buffer-size) 0)
+      (insert "#+TITLE: Weekly Reviews\n")
+      (insert "#+AUTHOR: あなたの名前\n")
+      (insert "#+OPTIONS: toc:2\n\n"))))
+
+(defun add-new-weekly-review ()
+  "現在の週の新しいWeekly Reviewエントリを追加する"
+  (interactive)
+  (open-weekly-reviews-file)
+  (goto-char (point-max))
+  (let* ((time (current-time))
+         (year (format-time-string "%Y" time))
+         (week (format-time-string "%V" time))
+         (week-start (format-time-string "%Y-%m-%d" 
+                                        (time-subtract time 
+                                                      (days-to-time (string-to-number (format-time-string "%u" time))))))
+         (week-end (format-time-string "%Y-%m-%d"
+                                      (time-add time
+                                               (days-to-time (- 7 (string-to-number (format-time-string "%u" time))))))))
+    (insert (format "\n* %s-W%s (%s 〜 %s)\n" year week week-start week-end))
+    (insert "📌** 1. What Happened\n**（今週の出来事・やったこと、事実ベース）**\n- \n\n")
+    (insert "🌟** 2. What Went Well\n**（よかったこと・うまくいったこと）**\n- \n\n")
+    (insert "💥** 3. What Didn't Go Well\n**（しんどかったこと・詰まったこと）**\n- \n\n")
+    (insert "🔁** 4. What to Adjust\n**（来週改善したいこと・やめる／始める）**\n- \n\n")
+    (insert "🌱** 5. Still Thinking...\n**（もやもや・未整理・考え中のこと）**\n- \n")))
