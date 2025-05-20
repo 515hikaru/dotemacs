@@ -42,14 +42,21 @@
          ("M-y" . consult-yank-pop)
 	 ("C-x C-r" . consult-recent-file)))
 (recentf-mode 1)
+
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :config
+  (exec-path-from-shell-initialize))
+
 ;; magit
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status)))
 ;; org-mode
+(setq my/org-directory "~/ghq/github.com/515hikaru/org-directory/")
 (use-package org-roam
   :custom
-  (org-roam-directory (file-truename "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/zettelkasten"))
+  (org-roam-directory (file-truename (expand-file-name "zettelkasten" my/org-directory)))
   :bind (("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
          ("C-c n c" . org-roam-capture)
@@ -66,11 +73,12 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start nil))
 ;; org-capture
-(setq org-directory "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/stocks")
 (global-set-key (kbd "C-c c") 'org-capture)
+(setq my/reading-log-path
+      (expand-file-name "stocks/reading-log.org" my/org-directory))
 (setq org-capture-templates
-      '(("r" "Reading Log" entry
-         (file+headline "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/stocks/reading-log.org" "2025")
+      `(("r" "Reading Log" entry
+         (file+headline ,my/reading-log-path "2025")
          "** %u 『%^{書名}』 %^{著者}
 :PROPERTIES:
 :FINISHED: %u
@@ -86,8 +94,8 @@
   :ensure t)
 (defun my/new-draft ()
   "Create a new draft org file with a timestamped filename and title, including Japanese."
-  (interactive)
-  (let* ((draft-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/zettelkasten/drafts/")
+  (interactive) 
+  (let* ((draft-dir (expand-file-name "zettelkasten/drafts/" my/org-directory))
          (title (read-string "Draft title: "))
          ;; スペースだけアンダーバー、それ以外はそのまま
          (sanitized-title (replace-regexp-in-string " " "_" title))
@@ -97,11 +105,10 @@
          (filepath (expand-file-name filename draft-dir)))
     (find-file filepath)
     (insert (format "#+title: %s\n\n" title))))
-
 (defun open-weekly-reviews-file ()
   "Weekly Reviewsファイルを開く"
   (interactive)
-  (let ((file-name "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/weekly_reviews/2025-weekly-reviews.org"))
+  (let ((file-name (expand-file-name "2025-weekly-reviews.org" my/org-directory)))
     (find-file file-name)
     (when (= (buffer-size) 0)
       (insert "#+TITLE: Weekly Reviews\n")
