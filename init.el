@@ -94,6 +94,7 @@
 (use-package org-ql
   :after org
   :ensure t)
+;;; custom habits
 (defun my/new-draft ()
   "Create a new draft org file with a timestamped filename and title, including Japanese."
   (interactive) 
