@@ -14,3 +14,6 @@ projectile-bookmarks.eld
 bookmarks
 session*
 \#*
+.org-id-locations
+custom.el
+org-roam.db
