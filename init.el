@@ -72,7 +72,11 @@
   :after org
   :ensure t
   :config (setq org-pomodoro-notify-p t)
-	   (setq alert-default-style 'osx-notifier))
+  (setq alert-default-style 'osx-notifier)
+  (setq org-pomodoro-length 25)
+  (setq org-pomodoro-short-break-length 5)
+  (setq org-pomodoro-long-break-length 30)
+  (setq org-pomodoro-long-break-frequency 4))
 
 ;; org-capture
 (global-set-key (kbd "C-c c") 'org-capture)
