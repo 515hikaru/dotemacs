@@ -32,22 +32,18 @@
 ;; fundamental packages
 (use-package vertico
   :init (vertico-mode))
-
 (use-package orderless
   :custom
   (completion-styles '(orderless basic)))
-
 (use-package consult
   :bind (("C-s" . consult-line)
          ("M-y" . consult-yank-pop)
 	 ("C-x C-r" . consult-recent-file)))
 (recentf-mode 1)
-
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
   :config
   (exec-path-from-shell-initialize))
-
 ;; magit
 (use-package magit
   :ensure t
