@@ -68,6 +68,12 @@
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start nil))
+(use-package org-pomodoro
+  :after org
+  :ensure t
+  :config (setq org-pomodoro-notify-p t)
+	   (setq alert-default-style 'osx-notifier))
+
 ;; org-capture
 (global-set-key (kbd "C-c c") 'org-capture)
 (setq my/reading-log-path
