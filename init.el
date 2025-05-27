@@ -90,7 +90,7 @@
 :FINISHED: %u
 :CONTEXT: %^{文脈|TOC理論|リーダーシップ|COO|経営|組織論|個人戦略|}
 :END:
-*** 所感 %?" :empty-lines 1)
+*** 所感 %?" :empty-lines 1 :prepend t)
       ("j" "Journal" entry
          (file+headline "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/weekly_reviews/journal.org" "2025")
          "* %<%Y-%m-%d>\n*** 今日なにした？\n- %?\n*** どう感じた？\n- \n*** 明日はどうしたい？\n- \n"
