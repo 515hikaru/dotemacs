@@ -16,6 +16,12 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(defvar is-wsl
+  (and (eq system-type 'gnu/linux)
+       (string-match "microsoft" (shell-command-to-string "uname -r"))))
+(when is-wsl
+  (load "~/.emacs.d/init-wsl.el"))
+
 ;; setup ui
 (use-package doom-themes
   :config

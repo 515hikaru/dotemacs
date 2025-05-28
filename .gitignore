@@ -17,3 +17,5 @@ session*
 .org-id-locations
 custom.el
 org-roam.db
+eln-cache
+tutorial
