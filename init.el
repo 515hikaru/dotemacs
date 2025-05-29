@@ -88,6 +88,8 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (setq my/reading-log-path
       (expand-file-name "stocks/reading-log.org" my/org-directory))
+(setq my/drafts-path
+      (expand-file-name "stocks/drafts.org" my/org-directory))
 (setq org-capture-templates
       `(("r" "Reading Log" entry
          (file+headline ,my/reading-log-path "2025")
@@ -100,24 +102,15 @@
       ("j" "Journal" entry
          (file+headline "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/weekly_reviews/journal.org" "2025")
          "* %<%Y-%m-%d>\n*** 今日なにした？\n- %?\n*** どう感じた？\n- \n*** 明日はどうしたい？\n- \n"
-         :prepend t)))
+         :prepend t)
+      ("d" "Draft Article" entry
+         (file my/drafts-path)
+         "* %^{タイトル}\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%?")))
 (use-package org-ql
   :after org
   :ensure t)
+(require 'ox-md)
 ;;; custom habits
-(defun my/new-draft ()
-  "Create a new draft org file with a timestamped filename and title, including Japanese."
-  (interactive) 
-  (let* ((draft-dir (expand-file-name "zettelkasten/drafts/" my/org-directory))
-         (title (read-string "Draft title: "))
-         ;; スペースだけアンダーバー、それ以外はそのまま
-         (sanitized-title (replace-regexp-in-string " " "_" title))
-         (filename (format "%s_%s.org"
-                           (format-time-string "%Y%m%d")
-                           sanitized-title))
-         (filepath (expand-file-name filename draft-dir)))
-    (find-file filepath)
-    (insert (format "#+title: %s\n\n" title))))
 (defun open-weekly-reviews-file ()
   "Weekly Reviewsファイルを開く"
   (interactive)
