@@ -50,7 +50,12 @@
   :if (memq window-system '(mac ns x))
   :config
   (exec-path-from-shell-initialize))
-;; magit
+(use-package ddskk
+  :bind (("C-x C-j" . skk-mode)
+	 ("C-x j" . skk-auto-fill-mode)))
+(setq skk-tut-file "~/.emacs.d/SKK.tut")
+
+;; Magit
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status)))
