@@ -6,3 +6,7 @@
   :config
   (setq default-input-method "japanese-mozc")
   (setq mozc-candidate-style 'echo-area))
+
+(set-face-attribute 'default nil
+                    :family "IPAexGothic"
+                    :height 280)
