@@ -19,14 +19,15 @@
 (defvar is-wsl
   (and (eq system-type 'gnu/linux)
        (string-match "microsoft" (shell-command-to-string "uname -r"))))
-(when is-wsl
-  (load "~/.emacs.d/init-wsl.el"))
+(if is-wsl
+    (load "~/.emacs.d/init-wsl.el")
+  (set-face-attribute 'default nil :family "Osaka−等幅" :height 140))
 
 ;; setup ui
 (use-package doom-themes
   :config
   (load-theme 'doom-one t))
-(set-face-attribute 'default nil :family "Osaka−等幅" :height 140)
+
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
