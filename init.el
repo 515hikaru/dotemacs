@@ -50,10 +50,6 @@
   :if (memq window-system '(mac ns x))
   :config
   (exec-path-from-shell-initialize))
-(use-package ddskk
-  :bind (("C-x C-j" . skk-mode)
-	 ("C-x j" . skk-auto-fill-mode)))
-(setq skk-tut-file "~/.emacs.d/SKK.tut")
 ;; Magit
 (use-package magit
   :ensure t
@@ -94,6 +90,8 @@
       (expand-file-name "stocks/reading-log.org" my/org-directory))
 (setq my/drafts-path
       (expand-file-name "stocks/drafts.org" my/org-directory))
+(setq my/journal-path
+      (expand-file-name "journal.org" my/org-directory))
 (setq org-capture-templates
       `(("r" "Reading Log" entry
          (file+headline ,my/reading-log-path "2025")
@@ -104,8 +102,8 @@
 :END:
 *** 所感 %?" :empty-lines 1 :prepend t)
       ("j" "Journal" entry
-         (file+headline "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/weekly_reviews/journal.org" "2025")
-         "* %<%Y-%m-%d>\n*** 今日なにした？\n- %?\n*** どう感じた？\n- \n*** 明日はどうしたい？\n- \n"
+         (file+headline ,my/journal-path "2025")
+         "* %<%Y-%m-%d>\n** 今日なにした？\n- %?\n** どう感じた？\n- \n** 明日はどうしたい？\n- \n"
          :prepend t)
       ("d" "Draft Article" entry
          (file my/drafts-path)
