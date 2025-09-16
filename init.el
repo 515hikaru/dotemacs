@@ -98,7 +98,7 @@
          "** %u 『%^{書名}』 %^{著者}
 :PROPERTIES:
 :FINISHED: %u
-:CONTEXT: %^{文脈|TOC理論|リーダーシップ|COO|経営|組織論|個人戦略|}
+:CONTEXT: %^{文脈|TOC理論|リーダーシップ|COO|経営|組織論|個人戦略|人文|}
 :END:
 *** 所感 %?" :empty-lines 1 :prepend t)
       ("j" "Journal" entry
