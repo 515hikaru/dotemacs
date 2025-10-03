@@ -112,6 +112,11 @@
   :after org
   :ensure t)
 (require 'ox-md)
+;;; utility
+(use-package open-junk-file
+  :bind ("C-x j" . open-junk-file)
+  :custom
+  (open-junk-file-format "~/ghq/github.com/515hikaru/org-directory/junk/%Y/%m/%d-%H%M%S.org"))
 ;;; custom habits
 (defun open-weekly-reviews-file ()
   "Weekly Reviewsファイルを開く"
