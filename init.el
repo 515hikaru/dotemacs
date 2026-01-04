@@ -102,7 +102,7 @@
 :END:
 *** 所感 %?" :empty-lines 1 :prepend t)
       ("j" "Journal" entry
-         (file+headline ,my/journal-path "2025")
+         (file+headline ,my/journal-path "2026")
          "* %<%Y-%m-%d>\n** 今日なにした？\n- %?\n** どう感じた？\n- \n** 明日はどうしたい？\n- \n"
          :prepend t)
       ("d" "Draft Article" entry
@@ -117,11 +117,15 @@
   :bind ("C-x j" . open-junk-file)
   :custom
   (open-junk-file-format "~/ghq/github.com/515hikaru/org-directory/junk/%Y/%m/%d-%H%M%S.org"))
+;;; markdown
+(use-package markdown-mode
+  :mode ("\\.md\\'" . markdown-mode)
+  :hook (markdown-ts-mode . visual-line-mode))
 ;;; custom habits
 (defun open-weekly-reviews-file ()
   "Weekly Reviewsファイルを開く"
   (interactive)
-  (let ((file-name (expand-file-name "2025-weekly-reviews.org" my/org-directory)))
+  (let ((file-name (expand-file-name "2026-weekly-reviews.org" my/org-directory)))
     (find-file file-name)
     (when (= (buffer-size) 0)
       (insert "#+TITLE: Weekly Reviews\n")
@@ -150,3 +154,18 @@
     (insert "** 3. What Didn't Go Well （しんどかったこと・詰まったこと）\n- \n\n")
     (insert "** 4. What to Adjust （来週改善したいこと・やめる／始める）\n- \n\n")
     (insert "** 5. Still Thinking... （もやもや・未整理・考え中のこと）\n- \n")))
+(setq my/project-path
+      (expand-file-name "articles/" my/org-directory))
+(defun my/new-draft (title)
+  "新規記事プロジェクトを作成してplot.mdを開く"
+  (interactive "s記事タイトル: ")
+  (let* ((date (format-time-string "%Y-%m-%d"))
+         (slug (downcase (replace-regexp-in-string "[^a-z0-9]+" "-" title)))
+         (dir (expand-file-name (format "%s-%s" date slug) my/project-path))
+         (plot-file (expand-file-name "plot.md" dir))
+         (main-file (expand-file-name "main.md" dir)))
+    (make-directory dir t)
+    (find-file plot-file)
+    (insert "---\ndraft: true\n---\n\n# 企画\n\n# 構成\n\n")
+    (save-buffer)
+    (find-file-other-window main-file)))
