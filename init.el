@@ -21,7 +21,7 @@
        (string-match "microsoft" (shell-command-to-string "uname -r"))))
 (if is-wsl
     (load "~/.emacs.d/init-wsl.el")
-  (set-face-attribute 'default nil :family "Osaka−等幅" :height 140))
+  (set-face-attribute 'default nil :family "Osaka−等幅" :height 240))
 
 ;; setup ui
 (use-package doom-themes
